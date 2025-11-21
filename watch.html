@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>مشاهدة الحلقة</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: "Cairo", sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      padding: 30px;
+    }
+
+    h1 {
+      color: #ff4747;
+      margin-bottom: 20px;
+    }
+
+    video {
+      width: 90%;
+      max-width: 1200px;
+      border: 3px solid #ff0000;
+      border-radius: 15px;
+      box-shadow: 0 0 30px rgba(255, 0, 0, 0.5);
+      outline: none;
+    }
+
+    .buttons {
+      margin-top: 25px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .buttons a {
+      text-decoration: none;
+      color: #fff;
+      background: linear-gradient(90deg, #ff0000, #b80000);
+      padding: 12px 20px;
+      border-radius: 10px;
+      transition: 0.3s;
+      box-shadow: 0 0 15px rgba(255,0,0,0.5);
+      font-weight: bold;
+    }
+
+    .buttons a:hover {
+      background: linear-gradient(90deg, #ff3333, #ff0000);
+      box-shadow: 0 0 25px rgba(255,0,0,0.8);
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 id="title">جارٍ تحميل الحلقة...</h1>
+    <video id="player" controls>
+      متصفحك لا يدعم تشغيل الفيديو.
+    </video>
+
+    <div class="buttons">
+      <a href="javascript:prevEpisode()">⬅️ الحلقة السابقة</a>
+      <a href="javascript:nextEpisode()">➡️ الحلقة التالية</a>
+      <a href="index.html">🏠العودة للمواسم</a>
+    </div>
+  </div>
+
+  <script>
+    // استخراج بيانات الموسم ورقم الحلقة من الرابط
+    const params = new URLSearchParams(window.location.search);
+    const season = params.get("season"); // s1 - s2 - s3 ...
+    let episode = parseInt(params.get("episode")); // رقم الحلقة
+
+    const video = document.getElementById("player");
+    const title = document.getElementById("title");
+
+    // تعيين عنوان الحلقة والفيديو الصحيح
+    if (season && episode) {
+      title.textContent = `🎬 الموسم ${season.replace("s","")} - الحلقة ${episode}`;
+      video.src = `videos/${season}/${season}e${episode}.mp4`;
+    } else {
+      title.textContent = "❌ لم يتم العثور على الحلقة";
+    }
+
+    // الانتقال للحلقة السابقة
+    function prevEpisode() {
+      if (episode > 0) {
+        window.location.href = `watch.html?season=${season}&episode=${episode - 1}`;
+      }
+    }
+
+    // الانتقال للحلقة التالية
+    function nextEpisode() {
+      if (episode < 35) {
+        window.location.href = `watch.html?season=${season}&episode=${episode + 1}`;
+      }
+
+
+      
+    }
+  </script>
+</body>
+</html>
