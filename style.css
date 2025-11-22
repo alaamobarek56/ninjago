@@ -8,15 +8,13 @@ body {
   text-align: center;
 }
 
-
-/* ====== بانر Ninjago (معدلة للموبايل) ====== */
+/* ====== بانر Ninjago ====== */
 .ninjago-banner img {
-  width: 100%;
-  max-height: 350px;
-  object-fit: cover;
-  display: block;
+  width: 300%;       /* تغطي كامل العرض */
+  height: 500px;     /* ارتفاع مناسب */
+  object-fit: cover; /* تكبير الصورة بدون تشويه */
+  display: block;    /* إزالة أي فراغ أسفل الصورة */
 }
-
 
 /* ====== مواسم نينجا ====== */
 .seasons-container {
@@ -38,11 +36,11 @@ body {
   overflow: hidden;
   transition: transform 0.3s, box-shadow 0.3s;
   width: 250px;
-  height: auto; /* بدل ثابت */
+  height: 280px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 10px;
+  padding-top: 10px;
 }
 
 .season-card img {
@@ -55,59 +53,47 @@ body {
   margin: 10px 0;
 }
 
-
 /* 🎬 زر مشاهدة الموسم 🎬 */
 .watch-btn {
-  display: block;
-  width: 100%;
-  max-width: 220px;
-  margin: 10px auto;
-  padding: 12px;
+  display: inline-block;
+  margin-top: 5px;
+  padding: 10px 15px;
   background: linear-gradient(90deg, #ff4747, #ff9900);
   color: white;
   font-weight: bold;
   text-decoration: none;
   border-radius: 12px;
-  font-size: 18px;
+  transition: 0.3s;
+  font-size: 16px;
 }
 
+.watch-btn:hover {
+  transform: scale(1.1);
+  background: linear-gradient(90deg, #ff6600, #ffaa00);
+  box-shadow: 0 0 10px #ff9900;
+}
 
-/* ====== العنوان ====== */
+.season-card:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 30px #ff9900;
+}
+
+/* ====== العنوان المتحرك ====== */
 #site-title {
-  font-size: 60px;
+  font-size: 70px;
+  animation: moveTitle 3s infinite alternate ease-in-out;
+  color: #fff;
 }
 
 .subtitle {
   font-size: 22px;
+  color: #fff;
   font-weight: bold;
   margin-top: 8px;
 }
 
-
-/* ========== 📱 تحسين خاص للموبايل ========== */
-@media (max-width: 600px) {
-
-  #site-title {
-    font-size: 40px;
-  }
-
-  .season-card {
-    width: 90%;
-    margin: 15px auto;
-    padding: 8px;
-  }
-
-  .season-card img {
-    height: 150px;
-  }
-
-  .watch-btn {
-    width: 90%;
-    font-size: 17px;
-    padding: 10px;
-  }
-
-  body {
-    overflow-x: hidden;
-  }
+@keyframes moveTitle {
+  0% { transform: translateX(0); color: #fff; }
+  50% { transform: translateX(20px); color: #ffcc00; }
+  100% { transform: translateX(-20px); color: #ff3300; }
 }
