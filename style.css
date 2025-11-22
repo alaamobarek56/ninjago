@@ -10,10 +10,11 @@ body {
 
 /* ====== بانر Ninjago ====== */
 .ninjago-banner img {
-  width: 300%;       /* تغطي كامل العرض */
-  height: 500px;     /* ارتفاع مناسب */
-  object-fit: cover; /* تكبير الصورة بدون تشويه */
-  display: block;    /* إزالة أي فراغ أسفل الصورة */
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  display: block;
+  border-bottom: 4px solid #ff0000;
 }
 
 /* ====== مواسم نينجا ====== */
@@ -96,4 +97,42 @@ body {
   0% { transform: translateX(0); color: #fff; }
   50% { transform: translateX(20px); color: #ffcc00; }
   100% { transform: translateX(-20px); color: #ff3300; }
+}
+
+/* 📱 ===== تحسين العرض على الموبايل ===== */
+@media (max-width: 600px) {
+
+  /* تصغير البانر */
+  .ninjago-banner img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+
+  /* تصغير الكروت */
+  .season-card {
+    width: 90%;
+    height: auto;
+    padding-bottom: 15px;
+  }
+
+  /* تصغير صورة الموسم */
+  .season-card img {
+    height: 140px;
+  }
+
+  /* تصغير الخطوط */
+  #site-title {
+    font-size: 35px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+  }
+
+  /* ترتيب الأعمدة عمودي */
+  .seasons {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
 }

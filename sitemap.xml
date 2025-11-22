@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- الصفحة الرئيسية -->
+  <url>
+    <loc>https://alaamobarek56.github.io/ninjago/</loc>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- صفحات المواسم -->
+  <url><loc>https://alaamobarek56.github.io/ninjago/season1.html</loc></url>
+  <url><loc>https://alaamobarek56.github.io/ninjago/season2.html</loc></url>
+  <url><loc>https://alaamobarek56.github.io/ninjago/season3.html</loc></url>
+  <url><loc>https://alaamobarek56.github.io/ninjago/season4.html</loc></url>
+  <url><loc>https://alaamobarek56.github.io/ninjago/season5.html</loc></url>
+  <url><loc>https://alaamobarek56.github.io/ninjago/season6.html</loc></url>
+  <url><loc>https://alaamobarek56.github.io/ninjago/season7.html</loc></url>
+  <url><loc>https://alaamobarek56.github.io/ninjago/season8.html</loc></url>
+  <url><loc>https://alaamobarek56.github.io/ninjago/season9.html</loc></url>
+  <url><loc>https://alaamobarek56.github.io/ninjago/season10.html</loc></url>
+  <url><loc>https://alaamobarek56.github.io/ninjago/season11.html</loc></url>
+  <url><loc>https://alaamobarek56.github.io/ninjago/season12.html</loc></url>
+  <url><loc>https://alaamobarek56.github.io/ninjago/season13.html</loc></url>
+  <url><loc>https://alaamobarek56.github.io/ninjago/season14.html</loc></url>
+  <url><loc>https://alaamobarek56.github.io/ninjago/season15.html</loc></url>
+  <url><loc>https://alaamobarek56.github.io/ninjago/season16.html</loc></url>
+  <url><loc>https://alaamobarek56.github.io/ninjago/season17.html</loc></url>
+  <url><loc>https://alaamobarek56.github.io/ninjago/season18.html</loc></url>
+
+</urlset>

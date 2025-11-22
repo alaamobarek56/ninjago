@@ -66,45 +66,105 @@
     </video>
 
     <div class="buttons">
-      <a href="javascript:prevEpisode()">⬅️ الحلقة السابقة</a>
-      <a href="javascript:nextEpisode()">➡️ الحلقة التالية</a>
+      <a id="prevEpisodeBtn" href="javascript:prevEpisode()">⬅️ الحلقة السابقة</a>
+      <a id="nextEpisodeBtn" href="javascript:nextEpisode()">➡️ الحلقة التالية</a>
+
+      <a id="prevSeasonBtn" href="javascript:prevSeason()">➡️الموسم السابق➡️</a>
+     <a id="nextSeasonBtn" href="javascript:nextSeason()">⬅️ الموسم التالي⬅️</a>
+
       <a href="index.html">🏠العودة للمواسم</a>
     </div>
   </div>
 
-  <script>
-    // استخراج بيانات الموسم ورقم الحلقة من الرابط
-    const params = new URLSearchParams(window.location.search);
-    const season = params.get("season"); // s1 - s2 - s3 ...
-    let episode = parseInt(params.get("episode")); // رقم الحلقة
+<script>
+  // استخراج بيانات الموسم ورقم الحلقة من الرابط
+  const params = new URLSearchParams(window.location.search);
+  const season = params.get("season"); // مثل s1 - s2 - s3 ...
+  let episode = parseInt(params.get("episode"));
 
-    const video = document.getElementById("player");
-    const title = document.getElementById("title");
+  const video = document.getElementById("player");
+  const title = document.getElementById("title");
 
-    // تعيين عنوان الحلقة والفيديو الصحيح
-    if (season && episode) {
-      title.textContent = `🎬 الموسم ${season.replace("s","")} - الحلقة ${episode}`;
-      video.src = `videos/${season}/${season}e${episode}.mp4`;
-    } else {
-      title.textContent = "❌ لم يتم العثور على الحلقة";
+  // عدد حلقات كل موسم
+  const episodesLimit = {
+    s1: 24,
+    s2: 30,
+    s3: 8,
+    s4: 10,
+    s5: 10,
+    s6: 10,
+    s7: 10,
+    s8: 10,
+    s9: 10,
+    s10: 4,
+    s11: 30,
+    s12: 16,
+    s13: 16,
+    s14: 20,
+    s15: 30,
+    s16: 20,
+    s17: 20,
+    s18: 20
+  };
+
+  // عدد المواسم
+  const seasonsCount = 18;
+
+  const maxEpisodes = episodesLimit[season] || 24;
+
+  // تعيين عنوان الحلقة ومسار الفيديو
+  if (season && episode) {
+    title.textContent = `🎬 الموسم ${season.replace("s","")} - الحلقة ${episode}`;
+    video.src = `videos/${season}/${season}e${episode}.mp4`;
+  } else {
+    title.textContent = "❌ لم يتم العثور على الحلقة";
+  }
+
+  // ===== الحلقة السابقة =====
+  function prevEpisode() {
+    if (episode > 1) {
+      window.location.href = `watch.html?season=${season}&episode=${episode - 1}`;
     }
+  }
 
-    // الانتقال للحلقة السابقة
-    function prevEpisode() {
-      if (episode > 0) {
-        window.location.href = `watch.html?season=${season}&episode=${episode - 1}`;
-      }
+  const prevEpisodeBtn = document.getElementById("prevEpisodeBtn");
+  if (episode <= 1) prevEpisodeBtn.style.display = "none";
+
+  // ===== الحلقة التالية =====
+  function nextEpisode() {
+    if (episode < maxEpisodes) {
+      window.location.href = `watch.html?season=${season}&episode=${episode + 1}`;
     }
+  }
 
-    // الانتقال للحلقة التالية
-    function nextEpisode() {
-      if (episode < 35) {
-        window.location.href = `watch.html?season=${season}&episode=${episode + 1}`;
-      }
+  const nextEpisodeBtn = document.getElementById("nextEpisodeBtn");
+  if (episode >= maxEpisodes) nextEpisodeBtn.style.display = "none";
 
+  // ===== الموسم السابق =====
+  const prevSeasonBtn = document.getElementById("prevSeasonBtn");
+  let seasonNumber = parseInt(season.replace("s",""));
 
-      
+  function prevSeason() {
+    if (seasonNumber > 1) {
+      let newSeason = "s" + (seasonNumber - 1);
+      window.location.href = `watch.html?season=${newSeason}&episode=1`;
     }
-  </script>
+  }
+
+  if (seasonNumber <= 1) prevSeasonBtn.style.display = "none";
+
+  // ===== الموسم التالي =====
+  const nextSeasonBtn = document.getElementById("nextSeasonBtn");
+
+  function nextSeason() {
+    if (seasonNumber < seasonsCount) {
+      let newSeason = "s" + (seasonNumber + 1);
+      window.location.href = `watch.html?season=${newSeason}&episode=1`;
+    }
+  }
+
+  if (seasonNumber >= seasonsCount) nextSeasonBtn.style.display = "none";
+
+</script>
 </body>
 </html>

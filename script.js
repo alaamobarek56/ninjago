@@ -1,19 +1,21 @@
-// نفترض أن العنصر عنده id="myButton"
-const btn = document.getElementById('myButton');
+// استخراج بيانات الموسم ورقم الحلقة من الرابط
+const params = new URLSearchParams(window.location.search);
+const season = params.get("season");
+let episode = parseInt(params.get("episode"));
 
-// ضبط الموقع في منتصف الشاشة
-function centerElement(el) {
-  const winWidth = window.innerWidth;
-  const winHeight = window.innerHeight;
-  const rect = el.getBoundingClientRect();
-  
-  el.style.position = 'absolute';
-  el.style.left = (winWidth - rect.width) / 2 + 'px';
-  el.style.top = (winHeight - rect.height) / 2 + 'px';
+// زر الحلقة السابقة
+const prevEpisodeBtn = document.getElementById("prevEpisodeBtn");
+
+// دالة الانتقال للحلقة السابقة
+function prevEpisode() {
+  if (episode > 1) {
+    window.location.href = `watch.html?season=${season}&episode=${episode - 1}`;
+  }
 }
 
-// نفّذ الضبط
-centerElement(btn);
-
-// إعادة الضبط لو تغيّر حجم الشاشة
-window.addEventListener('resize', () => centerElement(btn));
+// إخفاء زر الحلقة السابقة لو الحلقة الأولى
+(function handlePrevEpisodeVisibility() {
+  if (episode <= 1) {
+    prevEpisodeBtn.style.display = "none";
+  }
+})();
