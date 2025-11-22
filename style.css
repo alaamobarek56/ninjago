@@ -23,10 +23,11 @@ body {
   padding: 20px;
 }
 
+/* شبكة المواسم للكمبيوتر */
 .seasons {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 40px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
   justify-items: center;
 }
 
@@ -36,12 +37,13 @@ body {
   border-radius: 15px;
   overflow: hidden;
   transition: transform 0.3s, box-shadow 0.3s;
-  width: 250px;
-  height: 280px;
+  width: 100%;
+  max-width: 250px;
+  height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 10px;
+  padding-bottom: 15px;
 }
 
 .season-card img {
@@ -109,19 +111,18 @@ body {
     object-fit: cover;
   }
 
-  /* تصغير الكروت */
+  /* حجم الكروت */
   .season-card {
-    width: 90%;
+    width: 100%;
+    max-width: 180px;
     height: auto;
-    padding-bottom: 15px;
   }
 
-  /* تصغير صورة الموسم */
   .season-card img {
-    height: 140px;
+    height: 120px;
   }
 
-  /* تصغير الخطوط */
+  /* الخطوط */
   #site-title {
     font-size: 35px;
   }
@@ -130,9 +131,9 @@ body {
     font-size: 16px;
   }
 
-  /* ترتيب الأعمدة عمودي */
+  /* 🔥 كارتين في الصف */
   .seasons {
-    grid-template-columns: 1fr;
-    gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
   }
 }
