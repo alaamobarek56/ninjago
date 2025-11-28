@@ -168,33 +168,47 @@
 /* === ضبط صفحة الموسم للموبايل فقط === */
 @media (max-width: 768px) {
 
+  /* حجم الكرت */
   .episode-card {
     width: 100%;
     border-radius: 12px;
-    box-shadow: 0 0 15px rgba(255,0,0,0.25);
+    box-shadow: 0 0 12px rgba(255,0,0,0.25);
+    margin-bottom: 20px;      /* قللنا المسافة بين الكروت */
+    overflow: hidden;
   }
 
-  /* ↓ حجم الصورة أصغر هنا ↓ */
+  /* حجم الصورة داخل الكرت */
   .episode-card img {
-    height: 170px !important;
+    height: 130px !important;   /* بدل 220px – الآن الحجم مظبوط */
+    object-fit: cover;
   }
 
+  /* معلومات الحلقة */
   .episode-info {
-    padding: 10px;   /* بدل 15px */
+    padding: 10px 8px;         /* قللنا البادنج */
   }
 
   .episode-info h4 {
-    font-size: 18px;  /* بدل 20px */
-    margin: 8px 0;
+    font-size: 16px;           /* حجم أصغر ومناسب */
+    margin: 6px 0;
+    animation-duration: 4s;    /* أسرع وأجمل */
   }
 
-  /* ↓ زر المشاهدة أصغر شوي ↓ */
+  /* الزر داخل الكرت */
   .episode-info a {
-    width: 80%;
-    padding: 10px 0;
-    font-size: 16px;
-    margin-top: 8px;
+    width: 75%;
+    font-size: 15px;
+    padding: 8px 0;
+    margin-top: 6px;
+    border-radius: 8px;
   }
+
+  /* تعديل المسافات العامة */
+  .episodes {
+    gap: 15px;  /* بدل 30px */
+  }
+}
+
 }
 
   /* ❗ أزرار التنقل رأسية */
@@ -260,5 +274,6 @@
 
 </body>
 </html>
+
 
 
