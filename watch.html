@@ -4,167 +4,211 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>مشاهدة الحلقة</title>
+
   <style>
     body {
-      background-color: #000;
-      color: #fff;
       font-family: "Cairo", sans-serif;
-      text-align: center;
+      background: #0c0c0c;
+      color: #fff;
       margin: 0;
       padding: 0;
+      overflow-x: hidden;
     }
 
-    .container {
-      padding: 30px;
+    /* العنوان فوق الفيديو */
+    .video-title {
+      width: 100%;
+      padding: 15px;
+      background: #141414;
+      text-align: center;
+      border-bottom: 2px solid #b80000;
     }
 
-    h1 {
+    .video-title h2 {
+      margin: 0;
+      font-size: 24px;
       color: #ff4747;
-      margin-bottom: 20px;
-    }
-
-    video {
-      width: 90%;
-      max-width: 1200px;
-      border: 3px solid #ff0000;
-      border-radius: 15px;
-      box-shadow: 0 0 30px rgba(255, 0, 0, 0.5);
-      outline: none;
-    }
-
-    .buttons {
-      margin-top: 25px;
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      flex-wrap: wrap;
-    }
-
-    .buttons a {
-      text-decoration: none;
-      color: #fff;
-      background: linear-gradient(90deg, #ff0000, #b80000);
-      padding: 12px 20px;
-      border-radius: 10px;
-      transition: 0.3s;
-      box-shadow: 0 0 15px rgba(255,0,0,0.5);
       font-weight: bold;
     }
 
-    .buttons a:hover {
-      background: linear-gradient(90deg, #ff3333, #ff0000);
-      box-shadow: 0 0 25px rgba(255,0,0,0.8);
-      transform: scale(1.05);
+    /* منطقة الفيديو */
+    .video-container {
+      width: 100%;
+      background: #000;
+    }
+
+    iframe {
+      width: 100%;
+      height: 220px;
+      border: none;
+    }
+
+    /* معلومات الحلقة */
+    .info-box {
+      padding: 15px;
+    }
+
+    .info-box p {
+      color: #ccc;
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    /* أزرار التفاعل */
+    .actions {
+      display: flex;
+      gap: 10px;
+      margin: 15px 0;
+    }
+
+    .actions button {
+      flex: 1;
+      background: #202020;
+      border: 2px solid #333;
+      padding: 10px;
+      color: white;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    .actions button:hover {
+      background: #ff0000;
+      border-color: #ff0000;
+    }
+
+    /* قائمة الحلقات */
+    .episodes-list {
+      margin-top: 20px;
+      padding: 15px;
+    }
+
+    .episodes-list h3 {
+      font-size: 20px;
+      color: #ff4747;
+      margin-bottom: 10px;
+    }
+
+    .episode-item {
+      background: #151515;
+      margin-bottom: 10px;
+      padding: 10px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .episode-item img {
+      width: 110px;
+      height: 65px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+
+    .episode-item span {
+      font-size: 16px;
+      color: #fff;
+    }
+
+    .episode-item:hover {
+      background: #b80000;
+    }
+
+    /* كمبيوتر */
+    @media (min-width: 900px) {
+      .layout {
+        display: flex;
+        gap: 20px;
+        padding: 20px;
+      }
+
+      iframe {
+        height: 450px;
+      }
+
+      .episodes-list {
+        width: 35%;
+        max-height: 500px;
+        overflow-y: auto;
+      }
+
+      .video-section {
+        width: 65%;
+      }
     }
   </style>
 </head>
+
 <body>
-  <div class="container">
-    <h1 id="title">جارٍ تحميل الحلقة...</h1>
-    <video id="player" controls>
-      متصفحك لا يدعم تشغيل الفيديو.
-    </video>
 
-    <div class="buttons">
-      <a id="prevEpisodeBtn" href="javascript:prevEpisode()">⬅️ الحلقة السابقة</a>
-      <a id="nextEpisodeBtn" href="javascript:nextEpisode()">➡️ الحلقة التالية</a>
+<script>
+  // قراءة الموسم + رقم الحلقة من الرابط
+  const urlParams = new URLSearchParams(window.location.search);
+  const season = urlParams.get("season") || "s1";
+  const ep = urlParams.get("episode") || "1";
 
-      <a id="prevSeasonBtn" href="javascript:prevSeason()">➡️الموسم السابق➡️</a>
-     <a id="nextSeasonBtn" href="javascript:nextSeason()">⬅️ الموسم التالي⬅️</a>
+  // رابط الفيديو الحقيقي (غيره)
+  const videoLink = `https://www.youtube.com/embed/dQw4w9WgXcQ`;
+</script>
 
-      <a href="index.html">🏠العودة للمواسم</a>
+<div class="layout">
+
+  <!-- جزء الفيديو -->
+  <div class="video-section">
+
+    <!-- ⭐ العنوان فوق الفيديو -->
+    <div class="video-title">
+      <h2>الحلقة <span id="epNum"></span></h2>
+    </div>
+
+    <div class="video-container">
+      <iframe id="videoPlayer" src=""></iframe>
+    </div>
+
+    <!-- معلومات تحت الفيديو -->
+    <div class="info-box">
+      <p>
+        مشاهدة الحلقة رقم <span id="epNum2"></span> من الموسم <span id="seasonName"></span> بجودة عالية.
+      </p>
+
+      <div class="actions">
+        <button>👍 إعجاب</button>
+        <button>📤 مشاركة</button>
+      </div>
     </div>
   </div>
 
+  <!-- قائمة الحلقات -->
+  <div class="episodes-list">
+    <h3>جميع الحلقات</h3>
+
+    <div id="episodesContainer"></div>
+  </div>
+
+</div>
+
 <script>
-  // استخراج بيانات الموسم ورقم الحلقة من الرابط
-  const params = new URLSearchParams(window.location.search);
-  const season = params.get("season"); // مثل s1 - s2 - s3 ...
-  let episode = parseInt(params.get("episode"));
+  // وضع البيانات على الصفحة
+  document.getElementById("videoPlayer").src = videoLink;
+  document.getElementById("epNum").textContent = ep;
+  document.getElementById("epNum2").textContent = ep;
+  document.getElementById("seasonName").textContent = season.toUpperCase();
 
-  const video = document.getElementById("player");
-  const title = document.getElementById("title");
+  // توليد قائمة الحلقات
+  const epBox = document.getElementById("episodesContainer");
+  const totalEpisodes = 24;
 
-  // عدد حلقات كل موسم
-  const episodesLimit = {
-    s1: 24,
-    s2: 30,
-    s3: 8,
-    s4: 10,
-    s5: 10,
-    s6: 10,
-    s7: 10,
-    s8: 10,
-    s9: 10,
-    s10: 4,
-    s11: 30,
-    s12: 16,
-    s13: 16,
-    s14: 20,
-    s15: 30,
-    s16: 20,
-    s17: 20,
-    s18: 20
-  };
-
-  // عدد المواسم
-  const seasonsCount = 18;
-
-  const maxEpisodes = episodesLimit[season] || 24;
-
-  // تعيين عنوان الحلقة ومسار الفيديو
-  if (season && episode) {
-    title.textContent = `🎬 الموسم ${season.replace("s","")} - الحلقة ${episode}`;
-    video.src = `videos/${season}/${season}e${episode}.mp4`;
-  } else {
-    title.textContent = "❌ لم يتم العثور على الحلقة";
+  for (let i = 1; i <= totalEpisodes; i++) {
+    epBox.innerHTML += `
+      <div class="episode-item" onclick="location.href='watch.html?season=${season}&episode=${i}'">
+        <img src="images/${season}-banner.jpg">
+        <span>الحلقة ${i}</span>
+      </div>
+    `;
   }
-
-  // ===== الحلقة السابقة =====
-  function prevEpisode() {
-    if (episode > 1) {
-      window.location.href = `watch.html?season=${season}&episode=${episode - 1}`;
-    }
-  }
-
-  const prevEpisodeBtn = document.getElementById("prevEpisodeBtn");
-  if (episode <= 1) prevEpisodeBtn.style.display = "none";
-
-  // ===== الحلقة التالية =====
-  function nextEpisode() {
-    if (episode < maxEpisodes) {
-      window.location.href = `watch.html?season=${season}&episode=${episode + 1}`;
-    }
-  }
-
-  const nextEpisodeBtn = document.getElementById("nextEpisodeBtn");
-  if (episode >= maxEpisodes) nextEpisodeBtn.style.display = "none";
-
-  // ===== الموسم السابق =====
-  const prevSeasonBtn = document.getElementById("prevSeasonBtn");
-  let seasonNumber = parseInt(season.replace("s",""));
-
-  function prevSeason() {
-    if (seasonNumber > 1) {
-      let newSeason = "s" + (seasonNumber - 1);
-      window.location.href = `watch.html?season=${newSeason}&episode=1`;
-    }
-  }
-
-  if (seasonNumber <= 1) prevSeasonBtn.style.display = "none";
-
-  // ===== الموسم التالي =====
-  const nextSeasonBtn = document.getElementById("nextSeasonBtn");
-
-  function nextSeason() {
-    if (seasonNumber < seasonsCount) {
-      let newSeason = "s" + (seasonNumber + 1);
-      window.location.href = `watch.html?season=${newSeason}&episode=1`;
-    }
-  }
-
-  if (seasonNumber >= seasonsCount) nextSeasonBtn.style.display = "none";
-
 </script>
+
 </body>
 </html>
