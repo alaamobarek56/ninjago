@@ -6,12 +6,16 @@
   <title>🌀الموسم الاول🌀</title>
 
   <style>
+
+    /* ===== أساسيات الصفحة ===== */
     body {
       font-family: "Cairo", sans-serif;
       background-color: #0c0c0c;
       color: #fff;
       margin: 0;
       padding: 0;
+      width: 100%;
+      overflow-x: hidden; /* يمنع ميل الصفحة يمين */
     }
 
     /* ===== البانر ===== */
@@ -25,11 +29,12 @@
       box-shadow: 0 4px 20px rgba(255,0,0,0.3);
     }
 
-    /* ===== الحاوية ===== */
+    /* ===== الحاوية العامة ===== */
     .container {
       width: 100%;
-      margin: auto;
-      padding: 0 15px 50px;
+      margin: 0;
+      padding: 0 10px 40px;
+      box-sizing: border-box;
     }
 
     h2 {
@@ -53,14 +58,13 @@
       box-shadow: 0 0 20px rgba(255,0,0,0.25);
     }
 
-    /* ===== شبكة الحلقات (كمبيوتر) ===== */
+    /* ===== شبكة الحلقات على الكمبيوتر ===== */
     .episodes {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 25px;
     }
 
-    /* ===== كرت الحلقة ===== */
     .episode-card {
       background: #1a1a1a;
       border-radius: 12px;
@@ -137,7 +141,8 @@
       transform: scale(1.05);
     }
 
-    /* ===== 📱 موبايل: كرتين جنب بعض ===== */
+
+    /* ===== 📱 موبايل: صف فيه كرتين ===== */
     @media (max-width: 768px) {
 
       .season-banner {
@@ -174,6 +179,10 @@
         padding: 12px;
       }
 
+      .container {
+        padding: 0 8px 30px !important;
+      }
+
       .buttons {
         flex-direction: column;
         gap: 12px;
@@ -185,6 +194,7 @@
         padding: 12px 0;
         font-size: 16px;
       }
+
     }
 
   </style>
@@ -195,13 +205,14 @@
   <div class="season-banner"></div>
 
   <div class="container">
-    
-    <h2>🌀الموسم الأول🌀</h2>
+
+    <h2>🌀 الموسم الأول 🌀</h2>
 
     <!-- ===== الوصف ===== -->
     <div class="description-box">
-      تبدأ رحلة النينجا كفريق متكامل تحت قيادة المعلم وو…
-      (ضع أي نص تريده هنا)
+      تبدأ رحلة النينجا كفريق متكامل تحت قيادة المعلم وو…  
+      تظهر تهديدات قبائل السيربينتين القديمة…  
+      ويتطور لويد ليصبح النينجا الأخضر لأول مرة…  
     </div>
 
     <h2>الحلقات الكاملة</h2>
@@ -217,9 +228,10 @@
 
   </div>
 
+
   <!-- ===== سكربت توليد الحلقات ===== -->
   <script>
-    const container = document.getElementById('episodes-container');
+    const container = document.getElementById("episodes-container");
     const totalEpisodes = 24;
 
     for (let i = 1; i <= totalEpisodes; i++) {
