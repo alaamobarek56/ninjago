@@ -6,13 +6,20 @@
   <title>مشاهدة الحلقة</title>
 
   <style>
-    body {
-      font-family: "Cairo", sans-serif;
+    /* منع أي ميل يمين أو شمال */
+    html, body {
+      margin: 0 !important;
+      padding: 0 !important;
+      width: 100% !important;
+      overflow-x: hidden !important;
       background: #0c0c0c;
+      font-family: "Cairo", sans-serif;
       color: #fff;
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden;
+    }
+
+    * {
+      box-sizing: border-box !important;
+      max-width: 100% !important;
     }
 
     /* العنوان فوق الفيديو */
@@ -31,30 +38,33 @@
       font-weight: bold;
     }
 
-    /* منطقة الفيديو */
+    /* الفيديو */
     .video-container {
       width: 100%;
+      display: block;
       background: #000;
+      margin: 0;
+      padding: 0;
     }
 
     iframe {
-      width: 100%;
+      width: 100% !important;
       height: 220px;
       border: none;
+      display: block;
     }
 
-    /* معلومات الحلقة */
+    /* معلومات بعد الفيديو */
     .info-box {
       padding: 15px;
     }
 
     .info-box p {
       color: #ccc;
-      line-height: 1.7;
       font-size: 15px;
+      line-height: 1.7;
     }
 
-    /* أزرار التفاعل */
     .actions {
       display: flex;
       gap: 10px;
@@ -63,12 +73,12 @@
 
     .actions button {
       flex: 1;
-      background: #202020;
+      background: #222;
       border: 2px solid #333;
       padding: 10px;
       color: white;
       border-radius: 8px;
-      font-size: 16px;
+      font-size: 15px;
     }
 
     .actions button:hover {
@@ -78,26 +88,29 @@
 
     /* قائمة الحلقات */
     .episodes-list {
-      margin-top: 20px;
       padding: 15px;
     }
 
     .episodes-list h3 {
       font-size: 20px;
+      margin-bottom: 12px;
       color: #ff4747;
-      margin-bottom: 10px;
     }
 
     .episode-item {
       background: #151515;
-      margin-bottom: 10px;
-      padding: 10px;
-      border-radius: 8px;
       display: flex;
       align-items: center;
       gap: 10px;
+      margin-bottom: 10px;
+      padding: 10px;
+      border-radius: 8px;
       cursor: pointer;
       transition: 0.3s;
+    }
+
+    .episode-item:hover {
+      background: #b80000;
     }
 
     .episode-item img {
@@ -112,30 +125,26 @@
       color: #fff;
     }
 
-    .episode-item:hover {
-      background: #b80000;
-    }
-
     /* كمبيوتر */
     @media (min-width: 900px) {
       .layout {
         display: flex;
         gap: 20px;
-        padding: 20px;
+        padding: 15px 20px;
       }
 
       iframe {
-        height: 450px;
+        height: 450px !important;
+      }
+
+      .video-section {
+        width: 65%;
       }
 
       .episodes-list {
         width: 35%;
         max-height: 500px;
         overflow-y: auto;
-      }
-
-      .video-section {
-        width: 65%;
       }
     }
   </style>
@@ -144,64 +153,56 @@
 <body>
 
 <script>
-  // قراءة الموسم + رقم الحلقة من الرابط
-  const urlParams = new URLSearchParams(window.location.search);
-  const season = urlParams.get("season") || "s1";
-  const ep = urlParams.get("episode") || "1";
+  const p = new URLSearchParams(window.location.search);
+  const season = p.get("season") || "s1";
+  const ep = p.get("episode") || "1";
 
-  // رابط الفيديو الحقيقي (غيره)
-  const videoLink = `https://www.youtube.com/embed/dQw4w9WgXcQ`;
+  const videoURL = "https://www.youtube.com/embed/dQw4w9WgXcQ";
 </script>
 
 <div class="layout">
 
-  <!-- جزء الفيديو -->
+  <!-- الفيديو -->
   <div class="video-section">
 
-    <!-- ⭐ العنوان فوق الفيديو -->
     <div class="video-title">
       <h2>الحلقة <span id="epNum"></span></h2>
     </div>
 
     <div class="video-container">
-      <iframe id="videoPlayer" src=""></iframe>
+      <iframe id="videoPlayer"></iframe>
     </div>
 
-    <!-- معلومات تحت الفيديو -->
     <div class="info-box">
-      <p>
-        مشاهدة الحلقة رقم <span id="epNum2"></span> من الموسم <span id="seasonName"></span> بجودة عالية.
-      </p>
+      <p>مشاهدة الحلقة رقم <span id="epNum2"></span> من الموسم <span id="seasonName"></span> بجودة عالية.</p>
 
       <div class="actions">
         <button>👍 إعجاب</button>
         <button>📤 مشاركة</button>
       </div>
     </div>
+
   </div>
 
   <!-- قائمة الحلقات -->
   <div class="episodes-list">
     <h3>جميع الحلقات</h3>
-
     <div id="episodesContainer"></div>
   </div>
 
 </div>
 
 <script>
-  // وضع البيانات على الصفحة
-  document.getElementById("videoPlayer").src = videoLink;
+  document.getElementById("videoPlayer").src = videoURL;
   document.getElementById("epNum").textContent = ep;
   document.getElementById("epNum2").textContent = ep;
   document.getElementById("seasonName").textContent = season.toUpperCase();
 
-  // توليد قائمة الحلقات
-  const epBox = document.getElementById("episodesContainer");
-  const totalEpisodes = 24;
+  const box = document.getElementById("episodesContainer");
+  const total = 24;
 
-  for (let i = 1; i <= totalEpisodes; i++) {
-    epBox.innerHTML += `
+  for (let i = 1; i <= total; i++) {
+    box.innerHTML += `
       <div class="episode-item" onclick="location.href='watch.html?season=${season}&episode=${i}'">
         <img src="images/${season}-banner.jpg">
         <span>الحلقة ${i}</span>
