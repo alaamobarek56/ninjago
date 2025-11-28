@@ -16,14 +16,16 @@
 
     /* ===== بانر الموسم ===== */
     .season-banner {
-      width: 100%;
-      height: 320px;
-      background-image: url("images/season18-banner.jpg");
-      background-size: cover;
-      background-position: center;
-      box-shadow: 0 4px 20px rgba(500,0,0,0.3);
-      margin-bottom: 35px;
-    }
+  width: 100%;
+  height: 260px;                  /* ارتفاع مناسب للموبايل */
+  background-image: url("images/season18-banner.jpg");
+  background-size: cover;         /* تجعل الصورة ممتدة بالكامل بدون قص */
+  background-position: center;    /* في النص */
+  background-repeat: no-repeat;   /* بدون تكرار */
+  border-radius: 0;               /* يخليها ممتدة لآخر الشاشة */
+  margin: 0 0 25px 0;
+}
+
 
     /* ===== الحاوية ===== */
    .container {
@@ -225,6 +227,7 @@
 
 </body>
 </html>
+
 
 
 
