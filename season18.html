@@ -168,57 +168,34 @@
 /* === ضبط صفحة الموسم للموبايل فقط === */
 @media (max-width: 768px) {
 
-  .season-banner {
-    height: 250px;
-  }
-
-  .container {
-    max-width: 100%;
-    padding: 0 10px 40px;
-  }
-
-  .description-box {
-    max-width: 100%;
-    padding: 15px;
-    margin: 15px 0 30px;
-    font-size: 15px;
-  }
-
-  /* ❗ إلغاء الجريد على الموبايل — كل حلقة صف واحد */
-  .episodes {
-    display: flex !important;
-    flex-direction: column;
-    gap: 30px;
-  }
-
-  /* ❗ كرت الحلقة ياخد الشاشة كلها */
   .episode-card {
     width: 100%;
-    border-radius: 14px;
-    box-shadow: 0 0 20px rgba(255,0,0,0.3);
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(255,0,0,0.25);
   }
 
-  /* ❗ تكبير صورة الحلقة */
+  /* ↓ حجم الصورة أصغر هنا ↓ */
   .episode-card img {
-    height: 220px !important;
+    height: 170px !important;
   }
 
   .episode-info {
-    padding: 15px;
+    padding: 10px;   /* بدل 15px */
   }
 
   .episode-info h4 {
-    font-size: 20px;
+    font-size: 18px;  /* بدل 20px */
+    margin: 8px 0;
   }
 
-  /* ❗ زر المشاهدة في النص وبعرض ممتاز */
+  /* ↓ زر المشاهدة أصغر شوي ↓ */
   .episode-info a {
-    display: block;
-    width: 85%;
-    margin: 10px auto 0;
-    font-size: 17px;
-    padding: 12px 0;
+    width: 80%;
+    padding: 10px 0;
+    font-size: 16px;
+    margin-top: 8px;
   }
+}
 
   /* ❗ أزرار التنقل رأسية */
   .buttons {
@@ -283,4 +260,5 @@
 
 </body>
 </html>
+
 
