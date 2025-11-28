@@ -3,38 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🌀الموسم الاول🌀</title>
+  <title>🌀الموسم الأول🌀</title>
 
   <style>
 
-    /* ===== أساسيات الصفحة ===== */
-    body {
-      font-family: "Cairo", sans-serif;
-      background-color: #0c0c0c;
-      color: #fff;
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      overflow-x: hidden; /* يمنع ميل الصفحة يمين */
+    /* ===== إزالة ميل الصفحة والفراغ ===== */
+    html, body {
+      margin: 0 !important;
+      padding: 0 !important;
+      width: 100% !important;
+      overflow-x: hidden !important;
+    }
+
+    * {
+      max-width: 100% !important;
+      box-sizing: border-box !important;
     }
 
     /* ===== البانر ===== */
     .season-banner {
-      width: 100%;
+      width: 100% !important;
       height: 350px;
       background-image: url("images/season1-banner.jpg");
       background-size: cover;
       background-position: center;
+      overflow: hidden !important;
+      display: block !important;
       margin-bottom: 30px;
       box-shadow: 0 4px 20px rgba(255,0,0,0.3);
     }
 
-    /* ===== الحاوية العامة ===== */
+    /* ===== الحاوية ===== */
     .container {
-      width: 100%;
-      margin: 0;
-      padding: 0 10px 40px;
-      box-sizing: border-box;
+      width: 100% !important;
+      margin: 0 !important;
+      padding: 0 10px 40px !important;
     }
 
     h2 {
@@ -58,7 +61,7 @@
       box-shadow: 0 0 20px rgba(255,0,0,0.25);
     }
 
-    /* ===== شبكة الحلقات على الكمبيوتر ===== */
+    /* ===== كروت الحلقات (كمبيوتر) ===== */
     .episodes {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -141,8 +144,7 @@
       transform: scale(1.05);
     }
 
-
-    /* ===== 📱 موبايل: صف فيه كرتين ===== */
+    /* ===== 📱 موبايل: كرتين جنب بعض ===== */
     @media (max-width: 768px) {
 
       .season-banner {
@@ -194,33 +196,29 @@
         padding: 12px 0;
         font-size: 16px;
       }
-
     }
 
   </style>
 </head>
+
 <body>
 
-  <!-- ===== البانر ===== -->
   <div class="season-banner"></div>
 
   <div class="container">
 
     <h2>🌀 الموسم الأول 🌀</h2>
 
-    <!-- ===== الوصف ===== -->
     <div class="description-box">
-      تبدأ رحلة النينجا كفريق متكامل تحت قيادة المعلم وو…  
-      تظهر تهديدات قبائل السيربينتين القديمة…  
-      ويتطور لويد ليصبح النينجا الأخضر لأول مرة…  
+      تبدأ رحلة النينجا كفريق متكامل تحت قيادة المعلم وو،  
+      تظهر تهديدات قبائل السيربينتين،  
+      ويتطور لويد ليصبح النينجا الأخضر لأول مرة.  
     </div>
 
     <h2>الحلقات الكاملة</h2>
 
-    <!-- ===== كروت الحلقات ===== -->
     <div class="episodes" id="episodes-container"></div>
 
-    <!-- ===== أزرار التنقل ===== -->
     <div class="buttons">
       <a href="index.html">➡️ العودة إلى المواسم ➡️</a>
       <a href="season2.html">⬅️ الموسم التالي ⬅️</a>
@@ -228,8 +226,6 @@
 
   </div>
 
-
-  <!-- ===== سكربت توليد الحلقات ===== -->
   <script>
     const container = document.getElementById("episodes-container");
     const totalEpisodes = 24;
