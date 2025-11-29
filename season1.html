@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>🌀الموسم الاول🌀</title>
+
   <style>
     body {
       font-family: "Cairo", sans-serif;
@@ -13,12 +14,13 @@
       padding: 0;
     }
 
+    /* ✅ بانر الموسم مع رفع الخلفية لفوق */
     .season-banner {
       width: 100%;
       height: 420px;
       background-image: url("images/season1-banner.jpg");
       background-size: cover;
-      background-position: center;
+      background-position: center -60px; /* 🔥 الخلفية طالعة لفوق */
       box-shadow: 0 4px 20px rgba(255,0,0,0.3);
       margin-bottom: 35px;
     }
@@ -78,8 +80,6 @@
     .episode-info {
       padding: 14px;
       text-align: center;
-      overflow: hidden;
-      position: relative;
     }
 
    .episode-info h4 {
@@ -102,9 +102,7 @@
       font-weight: bold;
       font-size: 16px;
       box-shadow: 0 0 15px rgba(255,0,0,0.4);
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
+      transition: 0.3s ease;
     }
 
     .episode-info a:hover {
@@ -138,18 +136,16 @@
       transform: scale(1.05);
     }
 
-    /* === ضبط صفحة الموسم للموبايل فقط === */
+    /* === 🔥 ضبط الخلفية على الموبايل ورفعها لفوق أكتر === */
     @media (max-width: 768px) {
 
-      /* البانر */
       .season-banner {
         height: 200px !important;
-        background-position: top !important;
+        background-position: center -30px !important; /* 🔥 أعلى لفوق للموبايل */
         background-size: cover !important;
         margin-bottom: 20px !important;
       }
 
-      /* وصف الموسم */
       .description-box {
         padding: 12px !important;
         margin: 10px auto 25px !important;
@@ -158,31 +154,25 @@
         width: 95% !important;
       }
 
-      /* الكروت: خليهم 2 في الصف */
       .episodes {
         grid-template-columns: repeat(2, 1fr) !important;
         gap: 12px !important;
-        padding: 0 5px !important;
       }
 
-      /* صورة الكرت */
       .episode-card img {
         height: 120px !important;
       }
 
-      /* عنوان الحلقة */
       .episode-info h4 {
         font-size: 14px !important;
       }
 
-      /* زر المشاهدة */
       .episode-info a {
         font-size: 14px !important;
         padding: 7px 0 !important;
         width: 90% !important;
       }
 
-      /* أزرار التنقل */
       .buttons {
         flex-direction: column !important;
         gap: 12px !important;
@@ -210,14 +200,13 @@
     </div>
 
    <h2>الحلقات الكاملة</h2>
+
     <div class="episodes" id="episodes-container"></div>
 
-   <!-- Navigation buttons -->
-<div class="buttons">
-<a href="index.html">➡️ العودة إلى المواسم ➡️</a>
-<a href="season2.html">⬅️ الموسم التالى ⬅️</a>
-</div>
-    </div>
+   <div class="buttons">
+      <a href="index.html">➡️ العودة إلى المواسم ➡️</a>
+      <a href="season2.html">⬅️ الموسم التالى ⬅️</a>
+   </div>
 
   </div>
 
