@@ -82,27 +82,14 @@
       position: relative;
     }
 
-    /* ✅ حركة اسم الحلقة يمين وشمال */
-    @keyframes slideTitle {
-      0% { transform: translateX(-260%); color: #fff; }
-      50% { transform: translateX(260%); color: #ff4747; text-shadow: 0 0 10px #ff0000; }
-      100% { transform: translateX(-260%); color: #fff; }
-    }
-
    .episode-info h4 {
-  margin: 8px 0;
-  font-size: 17px;
-  font-weight: bold;
-  text-align: center;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-
-    /* 🚫 توقف الحركة عند مرور الماوس */
-    .episode-card:hover .episode-info h4 {
-      animation-play-state: paused;
+      margin: 8px 0;
+      font-size: 17px;
+      font-weight: bold;
+      text-align: center;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .episode-info a {
@@ -120,24 +107,8 @@
       overflow: hidden;
     }
 
-    .episode-info a::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(120deg, rgba(255,255,255,0.4), transparent);
-      transition: all 0.6s ease;
-    }
-
-    .episode-info a:hover::before {
-      left: 100%;
-    }
-
     .episode-info a:hover {
       background: linear-gradient(90deg, #ff3333, #ff0000);
-      box-shadow: 0 0 25px rgba(255,0,0,0.7);
       transform: scale(1.05);
     }
 
@@ -164,70 +135,64 @@
 
     .buttons a:hover {
       background: linear-gradient(90deg, #ff0000, #b80000);
-      box-shadow: 0 0 20px rgba(255,0,0,0.6);
       transform: scale(1.05);
     }
-/* === ضبط صفحة الموسم للموبايل فقط === */
-@media (max-width: 768px) {
 
-  /* البانر */
-  .season-banner {
-    height: 240px !important;
-    background-position: top;
-  }
+    /* === ضبط صفحة الموسم للموبايل فقط === */
+    @media (max-width: 768px) {
 
-  /* وصف الموسم */
-  .description-box {
-    padding: 12px !important;
-    margin: 10px auto 25px !important;
-    font-size: 14px !important;
-    line-height: 1.6 !important;
-    width: 95% !important;
-  }
+      /* البانر */
+      .season-banner {
+        height: 200px !important;
+        background-position: top !important;
+        background-size: cover !important;
+        margin-bottom: 20px !important;
+      }
 
-  /* الكروت: خليهم 2 في الصف */
-  .episodes {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 12px !important;
-    padding: 0 5px !important;
-  }
+      /* وصف الموسم */
+      .description-box {
+        padding: 12px !important;
+        margin: 10px auto 25px !important;
+        font-size: 14px !important;
+        line-height: 1.6 !important;
+        width: 95% !important;
+      }
 
-  /* صورة الكرت */
-  .episode-card img {
-    height: 120px !important;
-  }
+      /* الكروت: خليهم 2 في الصف */
+      .episodes {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 12px !important;
+        padding: 0 5px !important;
+      }
 
-  /* الكرت نفسه */
-  .episode-card {
-    border-radius: 10px !important;
-  }
+      /* صورة الكرت */
+      .episode-card img {
+        height: 120px !important;
+      }
 
-  /* عنوان الحلقة */
-  .episode-info h4 {
-    font-size: 15px !important;
-    margin: 6px 0 !important;
-    animation-duration: 4s !important;
-  }
+      /* عنوان الحلقة */
+      .episode-info h4 {
+        font-size: 14px !important;
+      }
 
-  /* زر المشاهدة */
-  .episode-info a {
-    font-size: 14px !important;
-    padding: 7px 0 !important;
-    width: 90% !important;
-  }
+      /* زر المشاهدة */
+      .episode-info a {
+        font-size: 14px !important;
+        padding: 7px 0 !important;
+        width: 90% !important;
+      }
 
-  /* أزرار التنقل */
-  .buttons {
-    flex-direction: column !important;
-    gap: 12px !important;
-    margin-top: 25px !important;
-  }
+      /* أزرار التنقل */
+      .buttons {
+        flex-direction: column !important;
+        gap: 12px !important;
+      }
 
-  .buttons a {
-    width: 100% !important;
-    padding: 12px 0 !important;
-  }
-}
+      .buttons a {
+        width: 100% !important;
+        padding: 12px 0 !important;
+      }
+    }
 
   </style>
 </head>
@@ -247,10 +212,10 @@
    <h2>الحلقات الكاملة</h2>
     <div class="episodes" id="episodes-container"></div>
 
-   <!-- ✅ أزرار التنقل (تم إصلاحها) -->
+   <!-- Navigation buttons -->
 <div class="buttons">
-<a href="index.html" aria-label="عودة إلى صفحة جميع المواسم">➡️ العودة إلى المواسم ➡️</a>
-<a href="season2.html" aria-label="الانتقال إلى الموسم الثاني" >⬅️ الموسم التالى ⬅️</a>
+<a href="index.html">➡️ العودة إلى المواسم ➡️</a>
+<a href="season2.html">⬅️ الموسم التالى ⬅️</a>
 </div>
     </div>
 
@@ -277,4 +242,3 @@
 
 </body>
 </html>
-
