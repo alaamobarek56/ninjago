@@ -6,196 +6,120 @@
   <title>🌀الموسم الأول🌀</title>
 
   <style>
-
-    /* ===== إزالة ميل الصفحة والفراغ ===== */
+    /* إصلاح الخلفية */
     html, body {
-      margin: 0 !important;
-      padding: 0 !important;
-      width: 100% !important;
-      overflow-x: hidden !important;
+      margin: 0;
+      padding: 0;
+      background: #0c0c0c;
+      color: #fff;
+      font-family: "Cairo", sans-serif;
+      overflow-x: hidden;
     }
 
-    * {
-      max-width: 100% !important;
-      box-sizing: border-box !important;
-    }
-
-    /* ===== البانر ===== */
     .season-banner {
-      width: 100% !important;
+      width: 100%;
       height: 350px;
       background-image: url("images/season1-banner.jpg");
       background-size: cover;
       background-position: center;
-      overflow: hidden !important;
-      display: block !important;
-      margin-bottom: 30px;
-      box-shadow: 0 4px 20px rgba(255,0,0,0.3);
-    }
-
-    /* ===== الحاوية ===== */
-    .container {
-      width: 100% !important;
-      margin: 0 !important;
-      padding: 0 10px 40px !important;
+      margin-bottom: 25px;
+      box-shadow: 0 0 20px rgba(255,0,0,0.3);
     }
 
     h2 {
       text-align: center;
       color: #ff4747;
-      margin: 20px 0;
-      font-size: 25px;
+      margin: 15px 0;
+      font-size: 26px;
     }
 
-    /* ===== صندوق الوصف ===== */
+    .container {
+      width: 100%;
+      padding: 0 15px 40px;
+      box-sizing: border-box;
+    }
+
     .description-box {
-      background-color: #181818;
+      background: #181818;
       border: 2px solid #ff0000;
-      border-radius: 10px;
-      padding: 18px;
-      margin: 20px auto 35px;
-      max-width: 800px;
+      padding: 15px;
+      border-radius: 12px;
+      margin: 15px auto 30px;
+      max-width: 900px;
+      box-shadow: 0 0 15px rgba(255,0,0,0.25);
       line-height: 1.8;
       font-size: 16px;
       text-align: center;
-      box-shadow: 0 0 20px rgba(255,0,0,0.25);
     }
 
-    /* ===== كروت الحلقات (كمبيوتر) ===== */
+    /* كروت الحلقات */
     .episodes {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 25px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
     }
 
     .episode-card {
       background: #1a1a1a;
-      border-radius: 12px;
+      border-radius: 14px;
       overflow: hidden;
       box-shadow: 0 3px 10px rgba(255,0,0,0.25);
       transition: 0.3s;
     }
 
     .episode-card:hover {
-      transform: translateY(-8px) scale(1.03);
+      transform: translateY(-6px);
     }
 
     .episode-card img {
       width: 100%;
-      height: 160px;
+      height: 130px;
       object-fit: cover;
       border-bottom: 2px solid #ff0000;
     }
 
     .episode-info {
+      padding: 10px;
       text-align: center;
-      padding: 12px;
     }
 
     .episode-info h4 {
-      font-size: 19px;
-      margin: 10px 0;
-      white-space: nowrap;
+      font-size: 16px;
+      margin: 6px 0;
     }
 
     .episode-info a {
       display: block;
-      width: 80%;
-      margin: auto;
-      padding: 10px 15px;
       background: #b80000;
       color: #fff;
+      padding: 8px 0;
       border-radius: 8px;
+      font-size: 14px;
+      margin-top: 5px;
       text-decoration: none;
       font-weight: bold;
-      font-size: 16px;
-      transition: 0.3s;
     }
 
-    .episode-info a:hover {
-      background: #ff0000;
-      transform: scale(1.05);
-    }
-
-    /* ===== أزرار التنقل ===== */
     .buttons {
-      margin-top: 40px;
+      margin-top: 25px;
       display: flex;
-      flex-direction: row;
-      gap: 20px;
-      justify-content: center;
-      flex-wrap: wrap;
+      flex-direction: column;
+      gap: 10px;
     }
 
     .buttons a {
+      text-align: center;
+      padding: 12px;
       background: #222;
-      padding: 12px 25px;
-      color: white;
+      color: #fff;
       border-radius: 10px;
-      text-decoration: none;
-      font-weight: bold;
       font-size: 17px;
+      text-decoration: none;
       border: 2px solid #b80000;
-      transition: 0.3s;
     }
 
     .buttons a:hover {
       background: #b80000;
-      transform: scale(1.05);
-    }
-
-    /* ===== 📱 موبايل: كرتين جنب بعض ===== */
-    @media (max-width: 768px) {
-
-      .season-banner {
-        height: 230px;
-      }
-
-      .episodes {
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 12px !important;
-      }
-
-      .episode-card img {
-        height: 115px !important;
-      }
-
-      .episode-info {
-        padding: 8px;
-      }
-
-      .episode-info h4 {
-        font-size: 14px;
-        margin: 6px 0;
-      }
-
-      .episode-info a {
-        width: 95%;
-        font-size: 13px;
-        padding: 7px 0;
-      }
-
-      .description-box {
-        max-width: 90%;
-        font-size: 14px;
-        padding: 12px;
-      }
-
-      .container {
-        padding: 0 8px 30px !important;
-      }
-
-      .buttons {
-        flex-direction: column;
-        gap: 12px;
-      }
-
-      .buttons a {
-        width: 100%;
-        text-align: center;
-        padding: 12px 0;
-        font-size: 16px;
-      }
     }
 
   </style>
@@ -212,7 +136,7 @@
     <div class="description-box">
       تبدأ رحلة النينجا كفريق متكامل تحت قيادة المعلم وو،  
       تظهر تهديدات قبائل السيربينتين،  
-      ويتطور لويد ليصبح النينجا الأخضر لأول مرة.  
+      ويتطور لويد ليصبح النينجا الأخضر لأول مرة.
     </div>
 
     <h2>الحلقات الكاملة</h2>
@@ -226,22 +150,22 @@
 
   </div>
 
-  <script>
-    const container = document.getElementById("episodes-container");
-    const totalEpisodes = 24;
+<script>
+  const container = document.getElementById("episodes-container");
+  const total = 24;
 
-    for (let i = 1; i <= totalEpisodes; i++) {
-      container.innerHTML += `
-        <div class="episode-card">
-          <img src="images/season1-banner.jpg" alt="الحلقة ${i}">
-          <div class="episode-info">
-            <h4>الحلقة ${i}</h4>
-            <a href="watch.html?season=s1&episode=${i}">▶️ مشاهدة الحلقة ▶️</a>
-          </div>
+  for (let i = 1; i <= total; i++) {
+    container.innerHTML += `
+      <div class="episode-card">
+        <img src="images/season1-banner.jpg">
+        <div class="episode-info">
+          <h4>الحلقة ${i}</h4>
+          <a href="watch.html?season=s1&episode=${i}">▶️ مشاهدة الحلقة ▶️</a>
         </div>
-      `;
-    }
-  </script>
+      </div>
+    `;
+  }
+</script>
 
 </body>
 </html>
