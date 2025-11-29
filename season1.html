@@ -89,14 +89,16 @@
       100% { transform: translateX(-260%); color: #fff; }
     }
 
-    .episode-info h4 {
-      margin: 10px 0;
-      font-size: 19px;
-      display: inline-block;
-      animation: slideTitle 8s ease-in-out infinite;
-      white-space: nowrap;
-      animation-play-state: running; /* ✅ الحركة شغالة */
-    }
+   .episode-info h4 {
+  margin: 8px 0;
+  font-size: 17px;
+  font-weight: bold;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 
     /* 🚫 توقف الحركة عند مرور الماوس */
     .episode-card:hover .episode-info h4 {
@@ -275,3 +277,4 @@
 
 </body>
 </html>
+
